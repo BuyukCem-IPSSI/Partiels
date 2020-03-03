@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    {{ content.body|raw }}
+    {{ content.date|date('Y-m-d') }}
+    {% if content.isPublish %}
+        Publié
+    {% else %}
+        En attente
+    {% endif %}
+    {{ content.author.lastName ~ ' ' ~ content.author.firstName }}
+
+    <h2>Comments</h2>
+    {% if content.comments is empty %}
+        <p>No comments here.</p>
+    {% else %}
+        {% for comment in content.comments %}
+            {{ comment.body }}
+            {{ comment.date|date('Y-m-d') }}
+            {{ comment.author.lastName ~ ' ' ~ comment.author.firstName }}
+        {% endfor %}
+    {% endif %}
+
+    {% if is_granted('ROLE_REVIEWER') or app.user == content.author %}
+        {{ form(form) }}
+    {% endif %}
+{% endblock %}

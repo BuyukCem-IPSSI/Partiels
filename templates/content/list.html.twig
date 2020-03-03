@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List content{% endblock %}
+{% block body %}
+    <h1>Content</h1>
+    <div class="grid-3">
+
+    </div>
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="text-center mt-3">
+            <a href="{{ path('game_new') }}" class="btn btn-dark">Add new game</a>
+        </div>
+    {% endif %}
+{% endblock %}
