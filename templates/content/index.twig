@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContentController!{% endblock %}
+
+{% block body %}
+    <ul>
+        {% for content in contents %}
+            <li>
+                {{ content.body}}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

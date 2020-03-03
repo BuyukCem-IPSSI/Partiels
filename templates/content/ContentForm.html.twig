@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}List content{% endblock %}
+{% block body %}
+    <h1>Content</h1>
+    <div class="grid-3">
+         {{ form_start(form) }}
+        {{ form(form) }}
+        <button class="btn">Register</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

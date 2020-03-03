@@ -12,9 +12,13 @@ RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
         libjpeg62-turbo-dev \
         libpng-dev \
+        zlib1g-dev \
+            libzip-dev\
     && docker-php-ext-configure gd --with-jpeg-dir=/usr/include \
     && docker-php-ext-configure calendar \
     && docker-php-ext-install gd calendar
+
+RUN docker-php-ext-install zip
 
 COPY conf.d/xdebug.ini $PHP_INI_DIR/conf.d/xdebug.ini
 COPY default.conf /etc/apache2/sites-available/000-default.conf
